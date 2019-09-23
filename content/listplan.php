@@ -30,7 +30,7 @@ include_once 'menu.php';
                 
                 echo"<tr>";
                 ?>
-            <form action="editplan.php" method="POST">
+            <form action="updateplan.php" method="POST">
                 <td><input type="submit" name="but" value="Edit"></td>
                 <td><input type="submit" name="but" value="Delete"></td>
             <input type="hidden" name="planid" value="<?php echo $detail[0];?>">

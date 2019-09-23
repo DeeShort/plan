@@ -29,5 +29,30 @@ class dabclass
       return $input->fetchAll();        
   }
   
+  public function deleteplan($planid){
+      $sql="delete from main where id = ".$planid;
+      $ergebnis=$this->pdo->query($sql);
+  }
+  
+  public function newplan($wurst) {
+      $sql="insert into main(Verbal,DLine,Plus,Minus,Status) values(?,?,?,?,?)";
+      $ergebnis= $this->pdo->prepare($sql);
+      $ergebnis->execute(array($wurst["verbal"],$wurst["dline"],$wurst["plus"],$wurst["minus"],$wurst["status"]));
+     }
+  
+  public function editplan($wurst) {
+      $sql="update main set Verbal=?,DLine=?,Plus=?,Minus=?,Status=? where id =?";
+      $ergebnis=$this->pdo->prepare($sql);
+      $ergebnis->execute(array($wurst["verbal"],$wurst["dline"],$wurst["plus"],$wurst["minus"],$wurst["status"],$wurst["planid"]));
+      
+  }
+  
+  public function getplan($pid) {
+      $sql="select * from main where id=".$pid;
+      $ergebnis=$this->pdo->query($sql);     
+      $output=$ergebnis->fetch();
+      return $output;
+      
+  }
 }
   
